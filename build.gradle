@@ -1,0 +1,120 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.7'
+    id 'org.beryx.jlink' version '2.15.1'
+}
+
+group 'com.diesel.dz'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 11
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+javafx {
+    version = "11.0.1"
+    modules = ['javafx.controls', 'javafx.fxml', 'javafx.base', 'javafx.graphics']
+}
+
+//mainClassName = "$moduleName/com.diesel.dz.test.Charting"
+mainClassName = "$moduleName/com.diesel.dz.ui.Main"
+
+dependencies {
+    //    testImplementation group: 'junit', name: 'junit', version: '4.12'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
+
+    implementation 'com.jfoenix:jfoenix:9.0.9' // Java 9
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.17'
+
+    implementation 'org.kordamp.ikonli:ikonli-javafx:11.3.4'
+    implementation 'org.kordamp.ikonli:ikonli-dashicons-pack:11.3.4'
+    implementation 'org.kordamp.ikonli:ikonli-fontawesome-pack:11.3.4'
+    implementation'org.kordamp.ikonli:ikonli-runestroicons-pack:11.3.4'
+    implementation 'org.kordamp.ikonli:ikonli-paymentfont-pack:11.3.4'
+    implementation 'org.kordamp.ikonli:ikonli-materialdesign-pack:11.3.4'
+    implementation 'org.kordamp.ikonli:ikonli-mapicons-pack:11.3.4'
+    implementation 'org.kordamp.ikonli:ikonli-ligaturesymbols-pack:11.3.4'
+    implementation 'org.kordamp.ikonli:ikonli-fontawesome5-pack:11.3.4'
+    implementation 'org.kordamp.ikonli:ikonli-entypo-pack:11.3.4'
+    implementation 'org.kordamp.ikonli:ikonli-icomoon-pack:11.3.4'
+    implementation 'org.kordamp.ikonli:ikonli-ionicons-pack:11.3.4'
+    implementation 'org.kordamp.ikonli:ikonli-ionicons4-pack:11.3.4'
+    implementation 'org.kordamp.ikonli:ikonli-elusive-pack:11.3.4'
+    implementation 'org.kordamp.ikonli:ikonli-material-pack:11.3.4'
+    implementation 'org.kordamp.ikonli:ikonli-metrizeicons-pack:11.3.4'
+    implementation 'org.kordamp.ikonli:ikonli-typicons-pack:11.3.4'
+//    implementation  group: 'com.itextpdf', name: 'itextpdf', version: '5.5.13.1'
+    implementation group: 'org.apache.pdfbox', name: 'pdfbox', version: '2.0.19'
+//    implementation group: 'commons-logging', name: 'commons-logging', version: '1.2'
+    implementation 'com.github.dhorions:boxable:1.5'
+    implementation 'com.github.vandeseer:easytable:0.6.1'
+    implementation files('libs/jSerialComm-2.4.0.jar')
+    implementation files('libs/jfxutils-1.0.jar')
+
+
+
+
+
+}
+
+run {
+    jvmArgs = [
+            "--add-exports=javafx.controls/com.sun.javafx.scene.control.behavior=com.jfoenix",
+            "--add-exports=javafx.controls/com.sun.javafx.scene.control=com.jfoenix",
+            "--add-exports=javafx.base/com.sun.javafx.binding=com.jfoenix",
+            "--add-exports=javafx.graphics/com.sun.javafx.stage=com.jfoenix",
+            "--add-exports=javafx.controls/com.sun.javafx.scene.control.behavior=com.jfoenix",
+            "--add-exports=javafx.base/com.sun.javafx.event=com.jfoenix"
+    ]
+}
+
+
+
+jlink {
+    //addExtraDependencies("javafx")
+    options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
+    launcher {
+        name = 'MAWDJA'
+        jvmArgs = ['-Dlog4j.configurationFile=./log4j2.xml']
+        jvmArgs = [
+                "--add-exports=javafx.controls/com.sun.javafx.scene.control.behavior=com.jfoenix",
+                "--add-exports=javafx.controls/com.sun.javafx.scene.control=com.jfoenix",
+                "--add-exports=javafx.base/com.sun.javafx.binding=com.jfoenix",
+                "--add-exports=javafx.graphics/com.sun.javafx.stage=com.jfoenix",
+                "--add-exports=javafx.controls/com.sun.javafx.scene.control.behavior=com.jfoenix",
+                "--add-exports=javafx.base/com.sun.javafx.event=com.jfoenix"
+        ]
+    }
+
+}
+
+ext {
+    moduleName = 'com.diesel.dz'
+    mainClass = 'com.diesel.dz.test.Charting'
+    launcherName = 'MAWDJA'
+    imageDirPath = "$buildDir/image"
+    imageZipPath = "$buildDir/image-zip/${launcherName}-image.zip"
+}
+
+tasks.jpackageImage {
+    doLast {
+        def subdirs = System.getenv('CI') ? ["/${launcherName}-linux", "/${launcherName}-win"] : ['']
+        subdirs.each { subdir ->
+            copy {
+                from('src/main/resources')
+                into("$buildDir/image/bin/src/main/resources")
+
+                copy {
+                    from('src/main/resources')
+                    into("$buildDir/jpackage/MAWDJA/src/main/resources")
+                }
+            }
+        }
+    }
+}

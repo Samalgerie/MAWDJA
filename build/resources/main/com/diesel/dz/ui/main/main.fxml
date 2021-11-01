@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXSlider?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="600.0" prefHeight="600.0" prefWidth="897.0" stylesheets="@../../../../../style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.diesel.dz.ui.main.main">
+    <children>
+        <BorderPane layoutX="90.0" layoutY="147.0" minHeight="600.0" prefHeight="600.0" prefWidth="897.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <top>
+                <AnchorPane maxHeight="40.0" minHeight="30.0" minWidth="-Infinity" prefHeight="40.0" styleClass="topAnchorPane" BorderPane.alignment="CENTER" />
+            </top>
+            <left>
+                <AnchorPane fx:id="leftAnchorPane" styleClass="leftAnchorPane" BorderPane.alignment="CENTER">
+               <children>
+                  <StackPane layoutX="-0.800000011920929" prefWidth="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <JFXButton fx:id="arrowButton" buttonType="RAISED" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="20.0" minWidth="20.0" onAction="#arrowOnAction" prefHeight="40.0" prefWidth="20.0" ripplerFill="#396bff91" styleClass="arrow-button" textFill="WHITE" StackPane.alignment="CENTER">
+                           <graphic>
+                              <FontIcon fx:id="arrowIcon" fill="#ca0c0c" iconColor="#3054a1" iconLiteral="dashicons-arrow-right-alt2" iconSize="25" styleClass="arrow-icon" />
+                           </graphic>
+                           <font>
+                              <Font size="1.0" />
+                           </font>
+                           <StackPane.margin>
+                              <Insets />
+                           </StackPane.margin>
+                        </JFXButton>
+                     </children>
+                  </StackPane>
+                  <VBox fx:id="leftVBox" alignment="TOP_CENTER" prefWidth="120.0" styleClass="left-vBox" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <JFXButton layoutX="10.0" layoutY="248.0" maxWidth="-Infinity" minWidth="0.0" prefHeight="120.0" prefWidth="120.0" styleClass="left-button" text=" ">
+                           <graphic>
+                              <FontIcon iconLiteral="dashicons-admin-home" iconSize="25" styleClass="left-icon" />
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton layoutX="10.0" layoutY="188.0" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="120.0" styleClass="left-button" text=" ">
+                           <graphic>
+                              <FontIcon iconLiteral="dashicons-admin-generic" iconSize="25" styleClass="left-icon" />
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton layoutX="10.0" layoutY="128.0" maxWidth="-Infinity" minWidth="0.0" prefHeight="120.0" prefWidth="120.0" styleClass="left-button" text=" ">
+                           <graphic>
+                              <FontIcon iconLiteral="dashicons-admin-site-alt3" iconSize="25" styleClass="left-icon" />
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" minWidth="0.0" prefHeight="120.0" prefWidth="120.0" styleClass="left-button" text=" ">
+                           <graphic>
+                              <FontIcon iconLiteral="dashicons-search" iconSize="25" styleClass="left-icon" />
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" minWidth="0.0" prefHeight="120.0" prefWidth="120.0" styleClass="left-button" text=" ">
+                           <graphic>
+                              <FontIcon iconLiteral="dashicons-archive" iconSize="25" styleClass="left-icon" />
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </VBox>
+               </children></AnchorPane>
+            </left>
+            <center>
+                <AnchorPane fx:id="centerAnchorPane" prefHeight="200.0" prefWidth="200.0" styleClass="centerAnchorPane" BorderPane.alignment="CENTER">
+               <children>
+                  <ScrollPane fx:id="scrollPane" layoutY="1.0" pannable="true" styleClass="scrollPane" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="0.0">
+                     <content>
+                        <VBox fx:id="chartVBox" alignment="CENTER_LEFT" fillWidth="false">
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+                  <JFXSlider fx:id="hZoomSlider" blockIncrement="0.1" maxWidth="-Infinity" minWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefWidth="100.0" styleClass="zoom-slider" value="-50.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="25.0" />
+                  <JFXSlider fx:id="vZoomSlider" blockIncrement="0.1" maxHeight="-Infinity" minHeight="-Infinity" orientation="VERTICAL" prefHeight="100.0" styleClass="zoom-slider" value="-50.0" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="10.0" />
+                  <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="40.0" minHeight="-Infinity" minWidth="40.0" prefWidth="40.0" spacing="7.0" styleClass="channel-vBox" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+                     <children>
+                        <JFXButton fx:id="channelButton1" maxHeight="26.0" maxWidth="25.0" minHeight="26.0" minWidth="25.0" onAction="#channelOnAction" prefHeight="26.0" prefWidth="25.0" styleClass="chanel-button" text="1" />
+                        <JFXButton fx:id="channelButton2" layoutX="12.0" layoutY="10.0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" onAction="#channelOnAction" prefHeight="25.0" prefWidth="25.0" styleClass="chanel-button" text="2" />
+                        <JFXButton fx:id="channelButton3" layoutX="12.0" layoutY="10.0" maxHeight="26.0" maxWidth="25.0" minHeight="26.0" minWidth="25.0" onAction="#channelOnAction" prefHeight="26.0" prefWidth="25.0" styleClass="chanel-button" text="3" />
+                        <JFXButton fx:id="channelButton4" layoutX="12.0" layoutY="40.0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" onAction="#channelOnAction" prefHeight="25.0" prefWidth="25.0" styleClass="chanel-button" text="4" />
+                        <JFXButton fx:id="channelButton5" layoutX="12.0" layoutY="10.0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" onAction="#channelOnAction" prefHeight="25.0" prefWidth="25.0" styleClass="chanel-button" text="5" />
+                        <JFXButton fx:id="channelButton6" layoutX="12.0" layoutY="40.0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" onAction="#channelOnAction" prefHeight="25.0" prefWidth="25.0" styleClass="chanel-button" text="6" />
+                        <JFXButton fx:id="channelButton7" layoutX="12.0" layoutY="71.0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" onAction="#channelOnAction" prefHeight="25.0" prefWidth="25.0" styleClass="chanel-button" text="7" />
+                        <JFXButton fx:id="channelButton8" layoutX="12.0" layoutY="101.0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" onAction="#channelOnAction" prefHeight="25.0" prefWidth="25.0" styleClass="chanel-button" text="8" />
+                     </children>
+                     <padding>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </padding>
+                  </VBox>
+               </children></AnchorPane>
+            </center>
+            <right>
+                <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="220.0" styleClass="rightAnchorPane" BorderPane.alignment="CENTER" />
+            </right>
+            <bottom>
+                <AnchorPane maxHeight="40.0" maxWidth="1.7976931348623157E308" minHeight="40.0" minWidth="-Infinity" prefHeight="40.0" styleClass="bottomAnchorPane" BorderPane.alignment="CENTER">
+               <children>
+                  <JFXButton fx:id="connectButton" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" onAction="#connectOnAction" ripplerFill="WHITE" styleClass="connect-button" text="..." textAlignment="RIGHT" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="5.0">
+                     <graphic>
+                        <FontIcon fx:id="connectIcon" iconLiteral="gmi-error" iconSize="28" styleClass="connect-icon" />
+                     </graphic>
+                  </JFXButton>
+                  <HBox spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <JFXButton fx:id="runButton" contentDisplay="CENTER" onAction="#runOnAction" ripplerFill="WHITE" styleClass="run-button" text="  ">
+                           <graphic>
+                              <FontIcon fx:id="runIcon" iconColor="WHITE" iconLiteral="dashicons-controls-play" iconSize="25" text="" />
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="saveButton" contentDisplay="CENTER" layoutX="20.0" layoutY="15.0" onAction="#saveOnAction" ripplerFill="WHITE" styleClass="trash-button" text="  ">
+                           <graphic>
+                              <FontIcon fx:id="runIcon1" iconColor="WHITE" iconLiteral="enty-download" iconSize="23" />
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="10.0" top="5.0" />
+                     </padding>
+                  </HBox>
+               </children></AnchorPane>
+            </bottom>
+        </BorderPane>
+    </children>
+</AnchorPane>
